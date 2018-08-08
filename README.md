@@ -1,2 +1,2 @@
 # BMI-Monitor
-Android application to track your BMI
+## Android application to monitor your BMI
