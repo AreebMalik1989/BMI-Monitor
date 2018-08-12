@@ -1,16 +1,15 @@
-package com.example.areebmalik1989.bmimonitor.view;
+package com.example.areebmalik1989.bmimonitor.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.areebmalik1989.bmimonitor.R;
-import com.example.areebmalik1989.bmimonitor.model.Person;
 import com.example.areebmalik1989.bmimonitor.model.calculator.BmiCalculator;
 import com.example.areebmalik1989.bmimonitor.model.calculator.IBmiCalculator;
 import com.example.areebmalik1989.bmimonitor.model.converter.Converter;
 import com.example.areebmalik1989.bmimonitor.model.converter.IConverter;
 
-public class MainActivity extends AppCompatActivity implements IMainActivityView{
+public class MainActivity extends AppCompatActivity implements IMainActivityView {
 
     IBmiCalculator bmiCalculator;
     IConverter converter;
