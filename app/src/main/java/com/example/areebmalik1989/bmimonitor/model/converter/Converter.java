@@ -1,7 +1,6 @@
 package com.example.areebmalik1989.bmimonitor.model.converter;
 
 import com.example.areebmalik1989.bmimonitor.model.Height;
-import com.example.areebmalik1989.bmimonitor.model.Units;
 import com.example.areebmalik1989.bmimonitor.model.Weight;
 
 public class Converter implements IConverter {
@@ -12,7 +11,7 @@ public class Converter implements IConverter {
         switch (h.getLengthUnit()){
             case METER:
                 return h.getHeight();
-            case INCHES:
+            case INCH:
                 return h.getHeight() * 0.0254;
             case CENTIMETER:
                 return h.getHeight() * 0.01;
@@ -27,7 +26,7 @@ public class Converter implements IConverter {
         switch (weight.getWeightUnit()){
             case KG:
                 return weight.getWeight();
-            case LBS:
+            case POUND:
                 return weight.getWeight() * 0.453592;
             default:
                     return -1;
