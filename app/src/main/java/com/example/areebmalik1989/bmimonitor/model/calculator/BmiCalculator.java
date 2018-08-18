@@ -1,7 +1,6 @@
 package com.example.areebmalik1989.bmimonitor.model.calculator;
 
 import com.example.areebmalik1989.bmimonitor.model.BMI;
-import com.example.areebmalik1989.bmimonitor.model.Person;
 
 public class BmiCalculator implements IBmiCalculator {
 
@@ -12,7 +11,7 @@ public class BmiCalculator implements IBmiCalculator {
             return -1.0;
         }
 
-        return weight / (height*height);
+        return ((weight/height)/height);
     }
 
     @Override
