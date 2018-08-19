@@ -26,6 +26,7 @@ public class BmiCalculatorCalculationTest {
                 {-1.0, -1.0, -1.0},
                 {-1.0, 0.0, -1.0},
                 {0.0, -1.0, -1.0},
+                {2.0, 80.0, 20.0}
         });
     }
 
