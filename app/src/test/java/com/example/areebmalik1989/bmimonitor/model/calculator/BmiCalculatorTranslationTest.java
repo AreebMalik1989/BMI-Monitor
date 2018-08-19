@@ -1,8 +1,6 @@
 package com.example.areebmalik1989.bmimonitor.model.calculator;
 
 import com.example.areebmalik1989.bmimonitor.model.BMI;
-import com.example.areebmalik1989.bmimonitor.model.Gender;
-import com.example.areebmalik1989.bmimonitor.model.Person;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -13,8 +11,6 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
-
-import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class BmiCalculatorTranslationTest {
