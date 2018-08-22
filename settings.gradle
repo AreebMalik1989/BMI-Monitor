@@ -1,1 +1,1 @@
-include ':app', ':arcprogress', ':opensource'
+include ':app', ':arcprogress', ':opensource', ':bmi-core'
