@@ -14,19 +14,13 @@ import com.example.areebmalik1989.bmimonitor.model.converter.IConverter;
 import com.example.areebmalik1989.bmimonitor.view.fragment.BmiFragment;
 import com.example.areebmalik1989.bmimonitor.view.fragment.IBmiFragment;
 
-import junit.framework.Assert;
-
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.Collection;
-
-import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class BmiFragmentGetBmiTest {

@@ -1,13 +1,9 @@
 package com.example.areebmalik1989.bmimonitor.view.fragment.bmiFragment;
 
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.areebmalik1989.bmimonitor.model.Height;
-import com.example.areebmalik1989.bmimonitor.model.Units;
-import com.example.areebmalik1989.bmimonitor.model.Weight;
 import com.example.areebmalik1989.bmimonitor.model.calculator.BmiCalculator;
 import com.example.areebmalik1989.bmimonitor.model.calculator.IBmiCalculator;
 import com.example.areebmalik1989.bmimonitor.model.converter.Converter;
@@ -15,13 +11,9 @@ import com.example.areebmalik1989.bmimonitor.model.converter.IConverter;
 import com.example.areebmalik1989.bmimonitor.view.fragment.BmiFragment;
 import com.example.areebmalik1989.bmimonitor.view.fragment.IBmiFragment;
 
-import junit.framework.Assert;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.w3c.dom.Text;
 
 public class BmiFragmentTest {
 
