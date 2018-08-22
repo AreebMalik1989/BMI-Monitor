@@ -1,109 +1,226 @@
 package com.example.areebmalik1989.bmimonitor.view.fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.example.areebmalik1989.arcprogress.ArcProgress;
+import com.example.areebmalik1989.bmi_core.BmiManager;
+import com.example.areebmalik1989.bmi_core.IBmiManager;
+import com.example.areebmalik1989.bmi_core.model.Height;
+import com.example.areebmalik1989.bmi_core.model.Units;
+import com.example.areebmalik1989.bmi_core.model.Weight;
 import com.example.areebmalik1989.bmimonitor.R;
+import com.example.areebmalik1989.bmimonitor.view.util.OutputManager;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link BmiFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link BmiFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class BmiFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.util.ArrayList;
+import java.util.List;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnItemSelected;
+import butterknife.OnTextChanged;
 
-    private OnFragmentInteractionListener mListener;
+public class BmiFragment extends Fragment implements IBmiFragment{
+
+    private View view;
+
+    private IBmiManager bmiManager;
+    private OutputManager outputManager;
+
+    private String weightType = Units.WeightUnit.KG.toString();
+    private String heightType = Units.LengthUnit.METER.toString();
+
+    @BindView(R.id.bmi_progressbar)
+    ArcProgress progressBar;
+
+    @BindView(R.id.bmi_translation)
+    TextView bmiTranslationTextView;
+
+    @BindView(R.id.weight_edittext)
+    EditText weightEditText;
+
+    @BindView(R.id.weight_edittext2)
+    EditText weightEditText2;
+
+    @BindView(R.id.height_edittext)
+    EditText heightEditText;
+
+    @BindView(R.id.height_edittext2)
+    EditText heightEditText2;
+
+    @BindView(R.id.weight_spinner)
+    Spinner weightSpinner;
+
+    @BindView(R.id.height_spinner)
+    Spinner heightSpinner;
 
     public BmiFragment() {
-        // Required empty public constructor
-    }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BmiFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static BmiFragment newInstance(String param1, String param2) {
-        BmiFragment fragment = new BmiFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        bmiManager = new BmiManager();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bmi, container, false);
-    }
+        view = inflater.inflate(R.layout.fragment_bmi, container, false);
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        ButterKnife.bind(this, view);
+
+        outputManager = new OutputManager(progressBar, bmiTranslationTextView);
+
+        setWeightSpinner();
+        setHeightSpinner();
+
+        return view;
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    private void setWeightSpinner() {
+
+        List<String> weightUnits = new ArrayList<>();
+
+        for(Units.WeightUnit weightUnit : Units.WeightUnit.values()){
+            if(!weightUnit.equals(Units.WeightUnit.UNKNOWN)) {
+                weightUnits.add(weightUnit.toString());
+            }
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                weightUnits
+        );
+
+        weightSpinner.setAdapter(arrayAdapter);
+
+        weightSpinner.setSelection(0);
+    }
+
+    private void setHeightSpinner() {
+
+        List<String> heightUnits = new ArrayList<>();
+
+        for(Units.LengthUnit lengthUnit : Units.LengthUnit.values()){
+            if(!lengthUnit.equals(Units.LengthUnit.UNKNOWN)) {
+                heightUnits.add(lengthUnit.toString());
+            }
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                heightUnits
+        );
+
+        heightSpinner.setAdapter(arrayAdapter);
+
+        heightSpinner.setSelection(0);
+    }
+
+    @OnItemSelected(R.id.height_spinner)
+    public void onHeightSelected(int position){
+
+        heightType = heightSpinner.getItemAtPosition(position).toString();
+
+        if(heightSpinner.getItemAtPosition(position).equals(Units.LengthUnit.FOOT_INCH.toString())){
+            heightEditText2.setVisibility(View.VISIBLE);
+        } else {
+            heightEditText2.setVisibility(View.GONE);
+        }
+
+        collectData();
+    }
+
+    @OnItemSelected(R.id.weight_spinner)
+    public void onWeightSelected(int position){
+
+        weightType = weightSpinner.getItemAtPosition(position).toString();
+
+        if(weightSpinner.getItemAtPosition(position).equals(Units.WeightUnit.STONE_POUND.toString())){
+            weightEditText2.setVisibility(View.VISIBLE);
+        } else {
+            weightEditText2.setVisibility(View.GONE);
+        }
+
+        collectData();
+    }
+
+    @OnTextChanged({R.id.weight_edittext, R.id.height_edittext, R.id.height_edittext2})
+    public void onTextChange(Editable editable){
+        collectData();
+    }
+
+    @Override
+    public void collectData(){
+
+        Units.LengthUnit heightUnit = BmiManager.getHeightUnit(heightType);
+        Units.WeightUnit weightUnit = BmiManager.getWeightUnit(weightType);
+        double weight = -1.0;
+        double height = -1.0;
+
+        try {
+
+            if(heightEditText2.getVisibility() == View.VISIBLE){
+                height = 12.0 * Double.valueOf(heightEditText.getText().toString());
+                height = height + Double.valueOf(heightEditText2.getText().toString());
+                heightType = Units.LengthUnit.INCH.toString();
+            } else {
+                height = Double.valueOf(heightEditText.getText().toString());
+            }
+
+            if(weightEditText2.getVisibility() == View.VISIBLE){
+                weight = 14.0 * Double.valueOf(weightEditText.getText().toString());
+                weight = weight + Double.valueOf(weightEditText2.getText().toString());
+                weightType = Units.WeightUnit.POUND.toString();
+            } else {
+                weight = Double.valueOf(weightEditText.getText().toString());
+            }
+
+        }catch (NumberFormatException nfe){
+            nfe.printStackTrace();
+        }
+
+        if(!heightUnit.equals(Units.LengthUnit.UNKNOWN)
+                && !weightUnit.equals(Units.WeightUnit.UNKNOWN)
+                && weight > 0
+                && height > 0)
+        {
+
+            Height h = new Height(height, heightUnit);
+            Weight w = new Weight(weight, weightUnit);
+
+            bmiManager.collectBmiData(weight, weightType, height, heightType);
+
+            showResult();
+        }
+    }
+
+    @Override
+    public void showResult(){
+
+        double bmi = bmiManager.giveBmi();
+        String bmiTranslation = bmiManager.giveBmiTranslation();
+
+        outputManager.setProgress(bmi);
+        bmiTranslationTextView.setText(bmiTranslation);
     }
 }
