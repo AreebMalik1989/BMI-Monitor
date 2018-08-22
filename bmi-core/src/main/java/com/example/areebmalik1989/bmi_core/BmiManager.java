@@ -1,15 +1,12 @@
-package com.example.areebmalik1989.bmimonitor.model.util;
+package com.example.areebmalik1989.bmi_core;
 
-import android.os.Bundle;
-import android.util.Log;
-
-import com.example.areebmalik1989.bmimonitor.model.Height;
-import com.example.areebmalik1989.bmimonitor.model.Units;
-import com.example.areebmalik1989.bmimonitor.model.Weight;
-import com.example.areebmalik1989.bmimonitor.model.calculator.BmiCalculator;
-import com.example.areebmalik1989.bmimonitor.model.calculator.IBmiCalculator;
-import com.example.areebmalik1989.bmimonitor.model.converter.Converter;
-import com.example.areebmalik1989.bmimonitor.model.converter.IConverter;
+import com.example.areebmalik1989.bmi_core.model.Height;
+import com.example.areebmalik1989.bmi_core.model.Units;
+import com.example.areebmalik1989.bmi_core.model.Weight;
+import com.example.areebmalik1989.bmi_core.model.calculator.BmiCalculator;
+import com.example.areebmalik1989.bmi_core.model.calculator.IBmiCalculator;
+import com.example.areebmalik1989.bmi_core.model.converter.Converter;
+import com.example.areebmalik1989.bmi_core.model.converter.IConverter;
 
 public class BmiManager implements IBmiManager {
 
@@ -35,14 +32,13 @@ public class BmiManager implements IBmiManager {
     }
 
     @Override
-    public Bundle giveBmiResult() {
+    public double giveBmi() {
+        return bmi;
+    }
 
-        Bundle bundle = new Bundle();
-
-        bundle.putString(IBmiManager.BMI_TRANSLATION, bmiTranslation);
-        bundle.putDouble(IBmiManager.BMI, bmi);
-
-        return bundle;
+    @Override
+    public String giveBmiTranslation() {
+        return bmiTranslation;
     }
 
     public static Units.LengthUnit getHeightUnit(String heightType){

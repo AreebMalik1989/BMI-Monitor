@@ -1,7 +1,7 @@
-package com.example.areebmalik1989.bmimonitor.model.converter;
+package com.example.areebmalik1989.bmi_core.model.converter;
 
-import com.example.areebmalik1989.bmimonitor.model.Height;
-import com.example.areebmalik1989.bmimonitor.model.Weight;
+import com.example.areebmalik1989.bmi_core.model.Height;
+import com.example.areebmalik1989.bmi_core.model.Weight;
 
 public class Converter implements IConverter {
 

@@ -1,6 +1,6 @@
-package com.example.areebmalik1989.bmimonitor.model.calculator;
+package com.example.areebmalik1989.bmi_core.model.calculator;
 
-import com.example.areebmalik1989.bmimonitor.model.BMI;
+import com.example.areebmalik1989.bmi_core.model.BMI;
 
 public class BmiCalculator implements IBmiCalculator {
 

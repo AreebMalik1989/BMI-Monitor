@@ -1,11 +1,11 @@
-package com.example.areebmalik1989.bmimonitor.model;
+package com.example.areebmalik1989.bmi_core.model;
 
 public class Weight {
 
     private double weight;
     private Units.WeightUnit weightUnit;
 
-    public Weight(int weight, Units.WeightUnit weightUnit) {
+    public Weight(double weight, Units.WeightUnit weightUnit) {
         this.weight = weight;
         this.weightUnit = weightUnit;
     }
