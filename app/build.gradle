@@ -23,6 +23,8 @@ dependencies {
     implementation project(':bmi-core')
     implementation project(':arcprogress')
     implementation project(':opensource')
+    implementation project(':simplify-resources')
+    implementation project(':simplify-about')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'

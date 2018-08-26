@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".view.activity.MainActivity">
+    tools:context=".view.activity.MainActivity"
+    android:theme="@style/SimplifyActivityTheme">
 
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:theme="@style/MyActivityTheme"/>
+        android:layout_height="match_parent"/>
 
     <ListView
         android:id="@+id/left_drawer"
