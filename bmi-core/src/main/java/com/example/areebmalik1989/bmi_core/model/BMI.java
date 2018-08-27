@@ -5,11 +5,11 @@ public enum BMI {
     VERY_SEVERELY_UNDERWEIGHT("Very Severely Underweight"),
     SEVERELY_UNDERWEIGHT("Severely Underweight"),
     UNDERWEIGHT("Underweight"),
-    NORMAL("Normal"),
+    NORMAL("Normal Weight"),
     OVER_WEIGHT("Overweight"),
-    OBESE_I("Obese I"),
-    OBESE_II("Obese II"),
-    OBESE_III("Obese III"),
+    OBESE_I("Class-I Obese"),
+    OBESE_II("Class-II Obese"),
+    OBESE_III("Class-III Obese"),
     UNKNOWN("Unknown");
 
     private String bmi;
