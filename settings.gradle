@@ -1,3 +1,4 @@
-include ':app', ':arcprogress', ':opensource', ':bmi-core', ':simplify-resources', ':simplify-about'
+include ':app', ':bmi-core', ':simplify-resources', ':simplify-activities', ':simplify-views'
 project(':simplify-resources').setProjectDir(new File('/home/areeb/Music/git/Android/simplify-android/simplify-resources'))
-project(':simplify-about').setProjectDir(new File('/home/areeb/Music/git/Android/simplify-android/simplify-about'))
+project(':simplify-activities').setProjectDir(new File('/home/areeb/Music/git/Android/simplify-android/simplify-activities'))
+project(':simplify-views').setProjectDir(new File('/home/areeb/Music/git/Android/simplify-android/simplify-views'))

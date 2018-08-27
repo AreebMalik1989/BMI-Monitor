@@ -89,14 +89,11 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.example.areebmalik1989.arcprogress.ArcProgress
+                    <github.areebmalik1989.simplify_views.arcProgress.ArcProgress
                         android:id="@+id/bmi_progressbar"
                         android:layout_width="250sp"
                         android:layout_height="250sp"
                         android:layout_gravity="center_horizontal"
-                        card_view:arc_bottom_text=""
-                        card_view:arc_bottom_text_size="25sp"
-                        card_view:arc_text_size="75sp"
                         card_view:arc_stroke_width="20sp"
                         card_view:arc_unfinished_color="@android:color/black"
                         card_view:arc_text_color="@android:color/black"/>

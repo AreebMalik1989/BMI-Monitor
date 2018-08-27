@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.areebmalik1989.arcprogress.ArcProgress;
 import com.example.areebmalik1989.bmi_core.BmiManager;
 import com.example.areebmalik1989.bmi_core.IBmiManager;
 import com.example.areebmalik1989.bmi_core.model.Height;
@@ -28,6 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemSelected;
 import butterknife.OnTextChanged;
+import github.areebmalik1989.simplify_views.arcProgress.ArcProgress;
 
 public class BmiFragment extends Fragment implements IBmiFragment{
 

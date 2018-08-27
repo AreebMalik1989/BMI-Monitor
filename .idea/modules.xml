@@ -4,11 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BMI-Monitor.iml" filepath="$PROJECT_DIR$/BMI-Monitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/arcprogress/arcprogress.iml" filepath="$PROJECT_DIR$/arcprogress/arcprogress.iml" />
       <module fileurl="file://$PROJECT_DIR$/bmi-core/bmi-core.iml" filepath="$PROJECT_DIR$/bmi-core/bmi-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/opensource/opensource.iml" filepath="$PROJECT_DIR$/opensource/opensource.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../simplify-android/simplify-about/simplify-about.iml" filepath="$PROJECT_DIR$/../simplify-android/simplify-about/simplify-about.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../simplify-android/simplify-activities/simplify-activities.iml" filepath="$PROJECT_DIR$/../simplify-android/simplify-activities/simplify-activities.iml" />
       <module fileurl="file://$PROJECT_DIR$/../simplify-android/simplify-resources/simplify-resources.iml" filepath="$PROJECT_DIR$/../simplify-android/simplify-resources/simplify-resources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../simplify-android/simplify-views/simplify-views.iml" filepath="$PROJECT_DIR$/../simplify-android/simplify-views/simplify-views.iml" />
     </modules>
   </component>
 </project>

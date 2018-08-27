@@ -3,7 +3,7 @@ package com.example.areebmalik1989.bmimonitor.view.util;
 import android.graphics.Color;
 import android.widget.TextView;
 
-import com.example.areebmalik1989.arcprogress.ArcProgress;
+import github.areebmalik1989.simplify_views.arcProgress.ArcProgress;
 
 public class OutputManager {
 
@@ -15,7 +15,7 @@ public class OutputManager {
         this.textView = textView;
 
         progressBar.setMax(40);
-        progressBar.setTextSize(200);
+        progressBar.setTextSize(75);
     }
 
     public void setProgress(double progress){
