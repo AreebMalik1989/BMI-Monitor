@@ -4,8 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/info"
-        android:title="info"
-        app:showAsAction="ifRoom"/>
+        android:id="@+id/about"
+        android:title="@string/about"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/credits"
+        android:title="@string/credits"
+        app:showAsAction="never"/>
 
 </menu>

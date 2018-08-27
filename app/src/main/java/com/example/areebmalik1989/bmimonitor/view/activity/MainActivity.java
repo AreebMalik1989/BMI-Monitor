@@ -20,7 +20,10 @@ import android.widget.ListView;
 import com.example.areebmalik1989.bmimonitor.R;
 import com.example.areebmalik1989.bmimonitor.view.util.MyFragmentManager;
 
-import github.areebmalik1989.simplify_about.AboutActivityManager;
+import java.util.HashMap;
+
+import github.areebmalik1989.simplify_activities.AboutActivityManager;
+import github.areebmalik1989.simplify_activities.Notifier;
 import github.areebmalik1989.simplify_resources.SimplifyPackage;
 
 public class MainActivity extends AppCompatActivity implements IMainActivity {
@@ -75,8 +78,22 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         super.onOptionsItemSelected(item);
 
         switch (item.getItemId()){
-            case R.id.info:
+
+            case R.id.about:
+
                 launchAboutActivity();
+                break;
+
+            case R.id.credits:
+
+                HashMap<String, String> licenceMap = new HashMap<>();
+                licenceMap.put(getString(R.string.butterknife), getString(R.string.butterknife_licence));
+
+                String title = getString(R.string.credits);
+
+                Notifier notifier = new Notifier(this);
+                notifier.showNotice(title, licenceMap);
+
                 break;
         }
 
@@ -114,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
     private void launchAboutActivity(){
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.raw.web_hi_res_512);
         PackageInfo packageInfo = SimplifyPackage.getPackageInfo(this);
 
         AboutActivityManager aboutActivityManager = new AboutActivityManager(MainActivity.this);

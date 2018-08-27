@@ -13,7 +13,10 @@
     <string name="calculate_bmi">Calculate BMI</string>
     <string name="save_bmi">Save BMI</string>
     <string name="bmi">BMI</string>
-    <string name="credits">Credits / Open Source Licences</string>
+
+    <!-- Menu -->
+    <string name="about">About</string>
+    <string name="credits">Open Source Credits</string>
 
     <!-- Open source licences -->
     <string name="butterknife">butterknife</string>
