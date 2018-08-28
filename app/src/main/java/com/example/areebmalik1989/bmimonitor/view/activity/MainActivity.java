@@ -131,14 +131,14 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
     private void launchAboutActivity(){
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.raw.web_hi_res_512);
         PackageInfo packageInfo = SimplifyPackage.getPackageInfo(this);
 
         AboutActivityManager aboutActivityManager = new AboutActivityManager(MainActivity.this);
         aboutActivityManager.startActivity(getString(R.string.app_name),
                 packageInfo.versionName, String.valueOf(packageInfo.versionCode),
                 getString(R.string.areeb),
-                getString(R.string.areeb_email), bitmap);
+                getString(R.string.areeb_email),
+                R.raw.web_hi_res_512);
 
     }
 }
