@@ -80,6 +80,16 @@
                 android:layout_marginTop="10dp"
                 card_view:cardCornerRadius="4dp">
 
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/bmi_fab"
+                    android:layout_height="56sp"
+                    android:layout_width="56sp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="16sp"
+                    android:elevation="8dp"
+                    card_view:pressedTranslationZ="12dp"
+                    android:src="@mipmap/ic_add"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
