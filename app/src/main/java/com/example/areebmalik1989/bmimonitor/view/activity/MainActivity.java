@@ -1,11 +1,9 @@
 package com.example.areebmalik1989.bmimonitor.view.activity;
 
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.areebmalik1989.bmimonitor.R;
 import com.example.areebmalik1989.bmimonitor.view.util.MyFragmentManager;
@@ -30,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
     private ActionBarDrawerToggle toggle;
     private MyFragmentManager myFragementManager;
+
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +60,22 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     }
 
     @Override
-    public void onBackPressed(){
-        View currentView = getCurrentFocus();
-        if(currentView != null){
-            currentView.clearFocus();
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
         }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
     @Override
@@ -88,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
                 HashMap<String, String> licenceMap = new HashMap<>();
                 licenceMap.put(getString(R.string.butterknife), getString(R.string.butterknife_licence));
+                licenceMap.put(getString(R.string.objectbox), getString(R.string.objectbox_licence));
 
                 String title = getString(R.string.credits);
 
@@ -111,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         listView = findViewById(R.id.left_drawer);
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, menu);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, menu);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
