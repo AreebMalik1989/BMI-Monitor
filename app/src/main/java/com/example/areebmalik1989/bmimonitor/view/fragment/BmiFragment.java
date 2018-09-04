@@ -1,6 +1,5 @@
 package com.example.areebmalik1989.bmimonitor.view.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -25,11 +24,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import butterknife.OnTextChanged;
 import github.areebmalik1989.simplify_views.arcProgress.ArcProgress;
 
-public class BmiFragment extends Fragment implements IBmiFragment{
+public class BmiFragment extends Fragment implements IBmiFragment {
 
     private View view;
 
@@ -38,6 +38,8 @@ public class BmiFragment extends Fragment implements IBmiFragment{
 
     private String weightType = Units.WeightUnit.KG.toString();
     private String heightType = Units.LengthUnit.METER.toString();
+
+    private double bmi;
 
     @BindView(R.id.bmi_progressbar)
     ArcProgress progressBar;
@@ -84,16 +86,6 @@ public class BmiFragment extends Fragment implements IBmiFragment{
         return view;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
     private void setWeightSpinner() {
 
         List<String> weightUnits = new ArrayList<>();
@@ -106,7 +98,7 @@ public class BmiFragment extends Fragment implements IBmiFragment{
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 getContext(),
-                android.R.layout.simple_spinner_item,
+                android.R.layout.simple_list_item_activated_1,
                 weightUnits
         );
 
@@ -127,7 +119,7 @@ public class BmiFragment extends Fragment implements IBmiFragment{
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 getContext(),
-                android.R.layout.simple_spinner_item,
+                android.R.layout.simple_list_item_activated_1,
                 heightUnits
         );
 
@@ -167,6 +159,25 @@ public class BmiFragment extends Fragment implements IBmiFragment{
     @OnTextChanged({R.id.weight_edittext, R.id.height_edittext, R.id.height_edittext2})
     public void onTextChange(Editable editable){
         collectData();
+    }
+
+    @OnClick(R.id.bmi_fab)
+    public void clickFab(View view){
+
+        Bundle bundle = new Bundle();
+        bundle.putDouble(SaveBmiDialogFragment.BMI_VALUE, bmi);
+
+        SaveBmiDialogFragment sbdFragment = new SaveBmiDialogFragment();
+        sbdFragment.setArguments(bundle);
+
+        sbdFragment.show(getFragmentManager(), SaveBmiDialogFragment.TAG);
+    }
+
+    @OnClick(R.id.off_fab)
+    public void clickOffFab(View view){
+
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
     }
 
     @Override
@@ -217,7 +228,7 @@ public class BmiFragment extends Fragment implements IBmiFragment{
     @Override
     public void showResult(){
 
-        double bmi = bmiManager.giveBmi();
+        bmi = bmiManager.giveBmi();
         String bmiTranslation = bmiManager.giveBmiTranslation();
 
         outputManager.setProgress(bmi);
