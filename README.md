@@ -10,7 +10,7 @@ Android application to monitor your BMI
 * [junit4](https://github.com/junit-team/junit4)
 * [mockito](https://github.com/mockito/mockito)
 
-## Licence
+## License
     Copyright 2018 Areeb Malik
 
     Licensed under the Apache License, Version 2.0 (the "License");
