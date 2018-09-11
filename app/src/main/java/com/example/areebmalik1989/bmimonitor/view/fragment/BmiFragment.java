@@ -1,7 +1,9 @@
 package com.example.areebmalik1989.bmimonitor.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,8 @@ import com.example.areebmalik1989.bmi_core.model.Height;
 import com.example.areebmalik1989.bmi_core.model.Units;
 import com.example.areebmalik1989.bmi_core.model.Weight;
 import com.example.areebmalik1989.bmimonitor.R;
+import com.example.areebmalik1989.bmimonitor.view.dialog.ExitDialogFragment;
+import com.example.areebmalik1989.bmimonitor.view.dialog.SaveBmiDialogFragment;
 import com.example.areebmalik1989.bmimonitor.view.util.OutputManager;
 
 import java.util.ArrayList;
@@ -32,6 +36,8 @@ import github.areebmalik1989.simplify_views.arcProgress.ArcProgress;
 public class BmiFragment extends Fragment implements IBmiFragment {
 
     private View view;
+    private FragmentManager fragmentManager;
+    private Context context;
 
     private IBmiManager bmiManager;
     private OutputManager outputManager;
@@ -78,6 +84,9 @@ public class BmiFragment extends Fragment implements IBmiFragment {
 
         ButterKnife.bind(this, view);
 
+        fragmentManager = getFragmentManager();
+        context = getContext();
+
         outputManager = new OutputManager(progressBar, bmiTranslationTextView);
 
         setWeightSpinner();
@@ -97,7 +106,7 @@ public class BmiFragment extends Fragment implements IBmiFragment {
         }
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
-                getContext(),
+                context,
                 android.R.layout.simple_list_item_activated_1,
                 weightUnits
         );
@@ -118,7 +127,7 @@ public class BmiFragment extends Fragment implements IBmiFragment {
         }
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
-                getContext(),
+                context,
                 android.R.layout.simple_list_item_activated_1,
                 heightUnits
         );
@@ -170,14 +179,14 @@ public class BmiFragment extends Fragment implements IBmiFragment {
         SaveBmiDialogFragment sbdFragment = new SaveBmiDialogFragment();
         sbdFragment.setArguments(bundle);
 
-        sbdFragment.show(getFragmentManager(), SaveBmiDialogFragment.TAG);
+        sbdFragment.show(fragmentManager, SaveBmiDialogFragment.TAG);
     }
 
     @OnClick(R.id.off_fab)
     public void clickOffFab(View view){
 
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
+        ExitDialogFragment exitDialogFragment = new ExitDialogFragment();
+        exitDialogFragment.show(fragmentManager, ExitDialogFragment.TAG);
     }
 
     @Override
