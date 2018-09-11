@@ -1,4 +1,4 @@
-package com.example.areebmalik1989.bmimonitor.view.fragment;
+package com.example.areebmalik1989.bmimonitor.view.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -30,8 +30,7 @@ public class SaveBmiDialogFragment extends DialogFragment {
 
     public SaveBmiDialogFragment() {
 
-        BoxStore store = MainApp.getRecordStore();
-        recordBox = store.boxFor(BmiRecord.class);
+        recordBox = MainApp.getBmiRecordBox();
     }
 
     @Override
