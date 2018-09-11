@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         setupNavigationDrawer();
 
         myFragementManager = new MyFragmentManager(this, R.id.content_frame);
-        myFragementManager.updateFragment(myFragementManager.bmiFragment);
+        myFragementManager.updateFragment(myFragementManager.getBmiFragment());
     }
 
     @Override
@@ -99,8 +99,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
             case R.id.credits:
 
                 HashMap<String, String> licenceMap = new HashMap<>();
-                licenceMap.put(getString(R.string.butterknife), getString(R.string.butterknife_licence));
-                licenceMap.put(getString(R.string.objectbox), getString(R.string.objectbox_licence));
+                licenceMap.put(getString(R.string.butterknife), getString(R.string.butterknife_license));
+                licenceMap.put(getString(R.string.objectbox), getString(R.string.objectbox_license));
+                licenceMap.put(getString(R.string.mpandroidchart), getString(R.string.mpandroidchart_license));
 
                 String title = getString(R.string.credits);
 
